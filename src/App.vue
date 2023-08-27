@@ -1,12 +1,19 @@
 <template>
   <v-app>
-    <header-component></header-component>
+    <HeaderComponent></HeaderComponent>
     <router-view />
-    <footer-component></footer-component>
+    <FooterComponent></FooterComponent>
   </v-app>
 </template>
 
-<script setup>
+<script>
   import HeaderComponent from './components/HeaderComponent.vue'
   import FooterComponent from './components/FooterComponent.vue'
+  export default {
+    name: "App",
+    components: { HeaderComponent, FooterComponent },
+    mounted() {
+      this.$store.dispatch("fetchProducts");
+  },
+};
 </script>

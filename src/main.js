@@ -1,16 +1,15 @@
-
 import App from './App.vue'
-
-// Composables
 import { createApp } from 'vue'
-
-// Plugins
 import { registerPlugins } from '@/plugins'
-
 import router from './router/index'
+import store from './store/index'
+import axios from "axios";
+import VueAxios from "vue-axios";
+
 
 const app = createApp(App)
 
 registerPlugins(app)
 
-app.use(router).mount('#app')
+app
+.use(store, router, axios, VueAxios).mount('#app')
