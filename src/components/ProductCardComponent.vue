@@ -28,9 +28,9 @@
       product: {},
     },
     methods: {
-    //   addToCart() {
-    //     this.$store.dispatch("addToCart", [this.product.id, 1]);
-    //   },
+      addToCart() {
+        this.$store.dispatch("addToCart", [this.product.id, 1]);
+      },
     },
   };
   </script>
