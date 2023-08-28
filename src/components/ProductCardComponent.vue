@@ -1,10 +1,10 @@
 <template>
-    <v-card class="mx-auto card" max-width="344">
+    <v-card class="mx-auto card" max-width="344" width="100%">
       <v-img contain class="img" :src="product.image" height="200px"></v-img>
       <router-link
         :to="{
-        //   name: 'productSpecifications',
-        //   params: { id: this.product.id },
+          name: 'productSpecifications',
+          params: { id: this.product.id },
         }"
         >
             <v-card-title>
@@ -15,7 +15,7 @@
       <v-card-actions class="card__actions">
         <v-card-title> {{ product.price }}$ </v-card-title>
         <v-spacer></v-spacer>
-        <v-btn @click="addToCart" color="orange lighten-2" text>
+        <v-btn @click="addToCart" variant="elevated">
           Купить
         </v-btn>
       </v-card-actions>

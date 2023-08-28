@@ -23,7 +23,9 @@
   <script>
   import ProductCardComponent from "@/components/ProductCardComponent.vue";
   export default {
-    components: { ProductCardComponent },
+    components: { 
+      ProductCardComponent 
+    },
     data: () => ({
       counter: 1,
     }),
