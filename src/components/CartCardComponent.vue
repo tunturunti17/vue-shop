@@ -25,13 +25,12 @@
       <v-card-actions class="card__actions">
         <v-card-title> {{ (product.price * count).toFixed(2) }}$ </v-card-title>
         <v-spacer></v-spacer>
-        <v-dialog transition="dialog-top-transition" max-width="600">
-          <template v-slot:activator="{ on, attrs }">
-            <v-btn v-bind="attrs" v-on="on" color="orange lighten-2" text>
+        <v-dialog transition="dialog-top-transition" max-width="600" v-model="dialog">
+          <template v-slot:activator="{ props }">
+            <v-btn v-bind="props" color="orange lighten-2" text>
               Удалить
             </v-btn>
           </template>
-          <template v-slot:default="dialog">
             <v-card>
               <v-toolbar color="orange" dark>Подтвердите действие</v-toolbar>
               <v-card-text>
@@ -43,7 +42,7 @@
                 <v-btn
                   color="orange lighten-2"
                   text
-                  @click="dialog.value = false"
+                  @click="dialog = false"
                   >Отмена</v-btn
                 >
                 <v-btn color="orange lighten-2" text @click="removeFromCart"
@@ -51,7 +50,6 @@
                 >
               </v-card-actions>
             </v-card>
-          </template>
         </v-dialog>
       </v-card-actions>
     </div>
@@ -59,6 +57,11 @@
 >
 <script>
 export default {
+  data() {
+    return {
+      dialog: false,
+    }
+  },
   props: {
     product: {},
   },
@@ -74,10 +77,11 @@ export default {
       }
     },
     removeFromCart() {
-      this.$destroy();
       this.$el.parentNode.removeChild(this.$el);
-      localStorage.removeItem(this.product.id);
-      this.$store.dispatch("addToCart", [this.product.id, -100000000]);
+      let arrayProductsFromLocalStorage = JSON.parse(localStorage.getItem('vue_shop_cart'));
+      arrayProductsFromLocalStorage = arrayProductsFromLocalStorage.filter(item => item.id != this.product.id);
+      localStorage.setItem('vue_shop_cart', JSON.stringify(arrayProductsFromLocalStorage))
+      this.dialog = false;
     },
   },
   computed: {

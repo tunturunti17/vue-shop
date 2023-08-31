@@ -37,10 +37,13 @@
         );
       },
       limitProduct() {
-        if (document.documentElement.clientWidth > 1740) return 5;
-        else if (document.documentElement.clientWidth > 1400) return 4;
-        else if (document.documentElement.clientWidth > 700) return 6;
-        else return 5;
+        if (document.documentElement.clientWidth >= 1200) {
+          return 6
+        } else if (document.documentElement.clientWidth > 768 || document.documentElement.clientWidth < 1200) {
+          return 4
+        } else { 
+          return 2
+        }
       },
     },
     methods: {

@@ -1,5 +1,6 @@
 <template>
-    <v-container>
+    <v-container style="margin-top: 200px">
+      <v-img contain class="img" :src="product.image" height="200px"></v-img>
       <div v-if="!product.id">
         Загрузка...
       </div>

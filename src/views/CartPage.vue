@@ -1,14 +1,13 @@
 <template>
-    <div>
+    <v-container style="margin-top: 65px;">
       <v-row class="flex justify-space-between align-center">
         <h1 class="main-title">Ваша корзина</h1>
-        <v-dialog tra nsition="dialog-top-transition" max-width="600">
-          <template v-slot:activator="{ on, attrs }">
-            <v-btn v-bind="attrs" v-on="on" color="orange lighten-2" text>
+        <v-dialog tra nsition="dialog-top-transition" max-width="600" v-model="dialog">
+          <template v-slot:activator="{ props }">
+            <v-btn v-bind="props" color="orange lighten-2" text>
               Подтвердить заказ
             </v-btn>
           </template>
-          <template v-slot:default="dialog">
             <v-card>
               <v-toolbar color="orange" dark>Заполните данные</v-toolbar>
               <v-card-text>
@@ -17,7 +16,7 @@
                     ><form
                       @submit.prevent="
                         confirmOrder();
-                        dialog.value = false;
+                        dialog = false;
                       "
                     >
                       <div class="mb-3">
@@ -58,7 +57,7 @@
                         <v-btn
                           color="orange lighten-2"
                           text
-                          @click="dialog.value = false"
+                          @click="dialog = false"
                           >Отмена</v-btn
                         >
                         <v-btn type="submit" color="orange lighten-2" text>
@@ -70,7 +69,6 @@
                 >
               </v-card-text>
             </v-card>
-          </template>
         </v-dialog>
       </v-row>
       <div class="cards">
@@ -80,12 +78,13 @@
           v-bind:key="product.id"
         ></CartCardComponent>
       </div>
-    </div>
+    </v-container>
   </template>
   <script>
   import CartCardComponent from "@/components/CartCardComponent.vue";
   export default {
     data: () => ({
+      dialog: false,
       valid: false,
       firstname: "",
       phone: "",
@@ -104,9 +103,6 @@
         console.log(this.$store.getters.getCartItems);
         localStorage.removeItem("vue_shop_cart");
         this.$router.push({ path: "/order_success" });
-      },
-      async sendOrderToServer() {
-        // await post(this.firstname,this.phone,this.address,this.city)
       },
     },
   };

@@ -1,5 +1,5 @@
 <template>
-    <v-card class="mx-auto card" max-width="344" width="100%">
+    <v-card class="card" max-width="335" width="100%">
       <v-img contain class="img" :src="product.image" height="200px"></v-img>
       <router-link
         :to="{
@@ -41,7 +41,7 @@
     text-decoration: none;
   }
   .card {
-    margin-bottom: 20px;
+    margin: 0px 10px 10px 10px;
     position: relative;
     padding-bottom: 60px;
   }

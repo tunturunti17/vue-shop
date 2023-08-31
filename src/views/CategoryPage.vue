@@ -1,23 +1,24 @@
 <template>
-<div>
-    <v-select
-      @change="onChange()"
-      :items="items"
-      v-model="category"
-      label="Выберите категорию"
-      dense
-      solo
-    ></v-select>
-    <v-row class="flex">
-      <ProductCardComponent
-        v-for="product in productItems"
-        v-bind:product="product"
-        v-bind:key="product.id"
-      ></ProductCardComponent>
-    </v-row>
-    <v-row class="flex justify-center">
-      <v-pagination v-model="page" :length="maxPages"></v-pagination>
-    </v-row></div>
+    <v-container style="margin-top: 65px;">
+      <v-select
+        @change="onChange()"
+        :items="items"
+        v-model="category"
+        label="Выберите категорию"
+        dense
+        solo
+      ></v-select>
+      <v-row class="flex">
+        <ProductCardComponent
+          v-for="product in productItems"
+          v-bind:product="product"
+          v-bind:key="product.id"
+        ></ProductCardComponent>
+      </v-row>
+      <v-row class="flex justify-center">
+        <v-pagination v-model="page" :length="maxPages"></v-pagination>
+      </v-row>
+    </v-container>
 </template>
 <script>
 import ProductCardComponent from "../components/ProductCardComponent.vue";
