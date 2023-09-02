@@ -1,5 +1,5 @@
-<template
-  ><div class="cart-card">
+<template>
+  <div class="cart-card">
     <div class="cart-card__img">
       <v-img contain :src="product.image" height="200px"></v-img>
     </div>
@@ -53,8 +53,8 @@
         </v-dialog>
       </v-card-actions>
     </div>
-  </div></template
->
+  </div>
+</template>
 <script>
 export default {
   data() {
