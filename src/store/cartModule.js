@@ -24,14 +24,14 @@ export const cartModule = {
     },
     actions: {
       fetchCartItems(ctx) {
-        let items = JSON.parse(localStorage.getItem("vue_shop_cart")) || [];
+        let items = JSON.parse(localStorage.getItem("shop_cart")) || [];
         ctx.commit("setCartItems", items);
       },
       deleteCartItems(ctx) {
         ctx.commit("deleteCartItems");
       },
       addToCart(ctx, params) {
-        let items = JSON.parse(localStorage.getItem("vue_shop_cart")) || [];
+        let items = JSON.parse(localStorage.getItem("shop_cart")) || [];
         let item = items.find((item) => item.id === params[0]);
         if (item) {
           item.count += params[1];
@@ -41,7 +41,7 @@ export const cartModule = {
         } else {
           if (params[1] > 0) items.push({ id: params[0], count: params[1] });
         }
-        localStorage.setItem("vue_shop_cart", JSON.stringify(items));
+        localStorage.setItem("shop_cart", JSON.stringify(items));
         ctx.commit("setCartItems", items);
       },
     },

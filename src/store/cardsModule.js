@@ -19,7 +19,7 @@ export const cardsModule = {
         .slice(0, 4);
     },
     getProductsInCart(state) {
-      let items = JSON.parse(localStorage.getItem("vue_shop_cart")) || [];
+      let items = JSON.parse(localStorage.getItem("shop_cart")) || [];
       let res = [];
       for (let i = 0; i < state.products.length; i++) {
         for (let j = 0; j < items.length; j++) {

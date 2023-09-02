@@ -78,9 +78,9 @@ export default {
     },
     removeFromCart() {
       this.$el.parentNode.removeChild(this.$el);
-      let arrayProductsFromLocalStorage = JSON.parse(localStorage.getItem('vue_shop_cart'));
+      let arrayProductsFromLocalStorage = JSON.parse(localStorage.getItem('shop_cart'));
       arrayProductsFromLocalStorage = arrayProductsFromLocalStorage.filter(item => item.id != this.product.id);
-      localStorage.setItem('vue_shop_cart', JSON.stringify(arrayProductsFromLocalStorage))
+      localStorage.setItem('shop_cart', JSON.stringify(arrayProductsFromLocalStorage))
       this.dialog = false;
     },
   },

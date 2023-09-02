@@ -101,7 +101,7 @@
       confirmOrder() {
         this.$store.dispatch("deleteCartItems");
         console.log(this.$store.getters.getCartItems);
-        localStorage.removeItem("vue_shop_cart");
+        localStorage.removeItem("shop_cart");
         this.$router.push({ path: "/order_success" });
       },
     },
